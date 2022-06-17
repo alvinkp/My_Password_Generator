@@ -20,7 +20,35 @@ function writePassword() {
   var passNumbers = confirm('Include Numbers?\nOk = Yes\nCancel = No');
   var passSpecialCharacters = confirm('Include Special Characters?\nOk = Yes\nCancel = No');
   }
-
+  // Password Generator function that's based on the answers provided by the previous prompts
+  function generatePassword(length, lowercase, uppercase, numbers, SpecialChars){
+    var generatedPass = [];
+  
+  // Random letter generator with option to capitalize returned letter
+  function randomLetterGenerator(shouldCapitalize) {
+    var letters ="abcdefghijklmnopqrstuvwxyz";
+    var myLetter = letters[Math.floor(Math.random() * letters.length)];
+    
+    if(shouldCapitalize){
+      return myLetter.toUpperCase();
+    }
+    else {
+      return myLetter;
+    }
+  }
+  
+  // Random Number Generator
+  function randomNumberGenerator() { 
+    return Math.floor(Math.random() * 10)
+  };
+  // Random Special Character Generator
+  function randomSpecialCharacterGenerator() {
+    var specialCharArray = [ "\\", "!", '\"', "#", "$", "%", "&", "\'","(",")", "*", "+" , "," , "-", "." , "/",":",";","<", "=",">", "?", "@", "[","]" ,"^", "_", "`", "{", "|", "}", "~"];
+    var mySpecialCharacter = specialCharArray[Math.floor(Math.random() * specialCharArray.length)];
+    
+    return mySpecialCharacter; 
+  }
+}
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
