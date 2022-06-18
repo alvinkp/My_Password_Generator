@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// from W3DOCS: https://www.w3docs.com/snippets/javascript/how-to-randomize-shuffle-a-javascript-array.html
+// ******** from W3DOCS: https://www.w3docs.com/snippets/javascript/how-to-randomize-shuffle-a-javascript-array.html
 function shuffleArray(array) {
   var curId = array.length;
   // There remain elements to shuffle
@@ -16,11 +16,13 @@ function shuffleArray(array) {
   }
   return array;
 }
-// from MDN WEB DOCS: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+// ******** from MDN WEB DOCS: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
-// Write password to the #password input
+
+// =====================================  Write password to the #password input
 function writePassword() {
   
   // Display Prompts
@@ -39,11 +41,12 @@ function writePassword() {
   var passNumbers = confirm('Include Numbers?\nOk = Yes\nCancel = No');
   var passSpecialCharacters = confirm('Include Special Characters?\nOk = Yes\nCancel = No');
   }
-  // Password Generator function that's based on the answers provided by the previous prompts
+
+  // ======================== Password Generator function that's based on the answers provided by the previous prompts
   function generatePassword(length, lowercase, uppercase, numbers, SpecialChars){
     var generatedPass = [];
   
-  // Random letter generator with option to capitalize returned letter
+  // ======================== Random letter generator with option to capitalize returned letter
   function randomLetterGenerator(shouldCapitalize) {
     var letters ="abcdefghijklmnopqrstuvwxyz";
     var myLetter = letters[Math.floor(Math.random() * letters.length)];
@@ -56,18 +59,20 @@ function writePassword() {
     }
   }
   
-  // Random Number Generator
+  //========================== Random Number Generator
   function randomNumberGenerator() { 
     return Math.floor(Math.random() * 10)
   };
-  // Random Special Character Generator
+
+  // ========================= Random Special Character Generator
   function randomSpecialCharacterGenerator() {
     var specialCharArray = [ "\\", "!", '\"', "#", "$", "%", "&", "\'","(",")", "*", "+" , "," , "-", "." , "/",":",";","<", "=",">", "?", "@", "[","]" ,"^", "_", "`", "{", "|", "}", "~"];
     var mySpecialCharacter = specialCharArray[Math.floor(Math.random() * specialCharArray.length)];
     
     return mySpecialCharacter; 
   }
-  // Compiles selected password criteria into an array.
+
+  // ========================= Compiles selected password criteria into an array.
   function gatherSelectedCriteria(){
       var myArrayOfCriteria = [];
       if(passLowercase){
@@ -86,9 +91,13 @@ function writePassword() {
       
       return myArrayOfCriteria;
   }
+
+
   // Stores compiled password criteria as a variable
   var selectedCriteria = gatherSelectedCriteria();
-  // Generates characters based on selected Criteria
+
+
+  // ========================= Generates characters based on selected Criteria
   function buildPassword(criteria){
     var myCharacter;
     switch (criteria){
@@ -110,28 +119,35 @@ function writePassword() {
     }
     return myCharacter;
   }
-  //  Preloads generatedpass array with one of each type of selected criteria
+
+  //  ======================== Preloads generatedpass array with one of each type of selected criteria
   function preloadGeneratedPass() {
     for(var i = 0; i < selectedCriteria.length; i++){
       generatedPass.push(buildPassword(selectedCriteria[i]));
     }
     return generatedPass;
   }
+
+
   preloadGeneratedPass();
   // Generates the rest of password criteria at random
   for (var i = 0; i < length - selectedCriteria.length; i++){
     generatedPass.push(buildPassword(selectedCriteria[getRandomInt(selectedCriteria.length)]));
   } 
   
+
   // generatedPass.join('');
   var shuffledPass = shuffleArray(generatedPass);
   return shuffledPass.join(''); 
   }
+
 
   // Call generatePassword, store it and update the HTML element so the user can see their generated password
   var password = generatePassword(passLength, passLowercase, passUppercase, passNumbers, passSpecialCharacters);
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
+
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
