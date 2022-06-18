@@ -49,6 +49,58 @@ function writePassword() {
     return mySpecialCharacter; 
   }
 }
+
+// Compiles selected password criteria into an array.
+function gatherSelectedCriteria(){
+  var myArrayOfCriteria = [];
+  if(passLowercase){
+    myArrayOfCriteria.push('lower');
+  }
+  
+  if(passUppercase) {
+    myArrayOfCriteria.push('upper');
+  }
+  if(passNumbers) {
+    myArrayOfCriteria.push('num');
+  }
+  if(passSpecialCharacters){
+    myArrayOfCriteria.push('special');
+  }
+  
+  return myArrayOfCriteria;
+}
+// Stores compiled password criteria as a variable
+var selectedCriteria = gatherSelectedCriteria();
+// Generates characters based on selected Criteria
+function buildPassword(criteria){
+var myCharacter;
+switch (criteria){
+  case 'lower':
+    myCharacter = randomLetterGenerator();
+    break;
+  
+  case 'upper':
+    myCharacter = randomLetterGenerator(true);
+    break;
+  case 'num':
+    myCharacter = randomNumberGenerator();
+    break;
+  case 'special':
+    myCharacter = randomSpecialCharacterGenerator();
+    break;
+    default:
+    console.log("Something went terribly wrong if you're seeing this!");
+}
+return myCharacter;
+}
+//  Preloads generatedpass array with one of each type of selected criteria
+function preloadGeneratedPass() {
+for(var i = 0; i < selectedCriteria.length; i++){
+  generatedPass.push(buildPassword(selectedCriteria[i]));
+}
+return generatedPass;
+}
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
