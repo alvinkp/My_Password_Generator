@@ -31,9 +31,20 @@ function writePassword() {
   
   // Check if passLength is valid, meaning its 8 or more, 128 or less and is a number 
   if(passLength < 8 || passLength > 128 || isNaN(passLength)){
-    alert('Password length is invalid or something other than a whole number was entered, please try again');
+    
+    // Check if the user clicked cancel on the prompt
+    if(passLength === null){
+    alert('Password Generation cancelled by user.');
+    return;
+    }
+    // Check if they entered a non-number or a number outside of the specified range
+    else{
+    alert('Password length is invalid or you didn\'t enter a number, please try again!');
+    return;
+    }
+    
   }
-  // If the passLength is valid then proceed with the rest of the prompts
+  // If the passLength is valid and hasn't been cancelled then proceed with the rest of the prompts
   else{
   // In order from top to bottom, ask user if they want to include: lowercase letters, UPPERCASE LETTERS, Numbers, Special Characters
   var passLowercase = confirm('Include lowercase letters?\nOk = Yes\nCancel = No');
