@@ -18,11 +18,6 @@ function shuffleArray(array) {
   return array;
 }
 
-// ******** from MDN reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
 // =====================================  Write password to the #password input
 function writePassword() {
   passWasGenerated = false;
@@ -146,7 +141,7 @@ function writePassword() {
 
   // Generates the rest of password criteria at random
   for (var i = 0; i < length - selectedCriteria.length; i++){
-    generatedPass.push(buildPassword(selectedCriteria[getRandomInt(selectedCriteria.length)]));
+    generatedPass.push(buildPassword(selectedCriteria[Math.floor(Math.random() * selectedCriteria.length)]));
   } 
   
 
