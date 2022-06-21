@@ -31,7 +31,7 @@ SO THAT I can create a strong password that provides greater security
 - Created prompts to ask user for input and preferences.
 - Checked user input to make sure they were giving us a number that was valid.
 - Checked that user chose at least one criteria for password.
-- Createed individual character generators.
+- Created individual character generators.
 - Ensured password had at LEAST one of each selected criteria.
 
 ---
