@@ -28,20 +28,11 @@ SO THAT I can create a strong password that provides greater security
 ## 🔧 <span style="color:Fuchsia">Optimizations</span> 
 
 ### <span style="color:Chartreuse">HTML</span>
-- Created HTML and CSS to satisfy the needs of the client.
-- Ensured that the site showed up properly on multiple devices with different viewport sizes and orientations.
-- Added descriptive alt text to relevant images for screen readers to function properly.
-- Established a <main> section to highlight the most important information.
-- Ensured heading attributes are in sequential order.
-- Removed extra and unused classes and ids
-
-### <span style="color:Chartreuse">CSS</span>
-- Condensed redundant styling.
-- Removed extra and unused selectors.
-
-### <span style="color:Chartreuse">Additional</span>
-- Commented both the HTML and CSS so future edits will be easier to execute.
-- Enabled smooth scrolling for a polished experience.
+- Created prompts to ask user for input and preferences.
+- Checked user input to make sure they were giving us a number that was valid.
+- Checked that user chose at least one criteria for password.
+- Createed individual character generators.
+- Ensured password had at LEAST one of each selected criteria.
 
 ---
 
